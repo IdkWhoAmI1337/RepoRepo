@@ -11,7 +11,7 @@ public class TicketConcert
 
     [Column("ConcertId")] public int ConcertId { get; set; }
 
-    public decimal Price { get; set; }
+    public double Price { get; set; }
     
     [ForeignKey("TicketId")] public virtual Ticket Ticket { get; set; } = null!;
 

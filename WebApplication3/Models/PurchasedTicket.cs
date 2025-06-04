@@ -3,15 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication3.Models;
 
-public class Purchase
+public class PurchasedTicket
 {
-    [Key] public int Id { get; set; }
+    [Key, Column(Order = 0)] public int TicketConcertId { get; set; }
 
-    public DateTime Date { get; set; }
-
-    [Column("CustomerId")] public int CustomerId { get; set; }
-
-    [Column("TicketConcertId")] public int TicketConcertId { get; set; }
+    [Key, Column(Order = 1)] public int CustomerId { get; set; }
+    
+    [Required] public DateTime PurchaseDate { get; set; }
 
     [ForeignKey("CustomerId")] public virtual Customer Customer { get; set; } = null!;
 

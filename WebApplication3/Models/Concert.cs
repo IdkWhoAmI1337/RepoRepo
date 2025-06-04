@@ -6,11 +6,11 @@ public class Concert
 {
     [Key] public int ConcertId { get; set; }
     
-    [MaxLength(100)] public string Name { get; set; } = null!;
+    [Required] [MaxLength(100)] public string Name { get; set; } = null!;
     
     public DateTime Date { get; set; }
     
     public int AvailableTickets { get; set; }
     
-    public virtual ICollection<Ticket> Tickets { get; set; } = null!;
+    public virtual ICollection<TicketConcert> TicketConcerts { get; set; } = null!;
 }

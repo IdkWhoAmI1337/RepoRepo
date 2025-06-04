@@ -6,9 +6,9 @@ public class Ticket
 {
     [Key] public int TicketId { get; set; }
 
-    [MaxLength(50)] public string SerialNumber { get; set; } = null!;
+    [Required] [MaxLength(50)] public string SerialNumber { get; set; } = null!;
+    
+    [Required] public int SeatNumber { get; set; }
 
-    public int SeatNumber { get; set; }
-
-    public virtual Concert Concert { get; set; } = null!;
+    public virtual ICollection<TicketConcert> TicketConcerts { get; set; } = null!;
 }

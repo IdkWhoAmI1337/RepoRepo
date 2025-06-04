@@ -8,5 +8,5 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Concert> Concerts { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
-    public DbSet<Purchase> Purchases { get; set; }
+    public DbSet<PurchasedTicket> PurchasedTickets { get; set; }
 }
