@@ -3,50 +3,50 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Data;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public class AppDbContext(DbContextOptions options) : DbContext(options)
 {
-    public DbSet<Customer> Customers { get; set; }
-    public DbSet<Concert> Concerts { get; set; }
-    public DbSet<Ticket> Tickets { get; set; }
-    public DbSet<PurchasedTicket> PurchasedTickets { get; set; }
-    
+    public DbSet<Character> Characters { get; set; }
+    public DbSet<Item> Items { get; set; }
+    public DbSet<Backpack> Backpacks { get; set; }
+    public DbSet<Title> Titles { get; set; }
+    public DbSet<CharacterTitle> CharacterTitles { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Concert>().HasData(
-            new Concert
-            {
-                ConcertId = 1,
-                Name = "Summer Rock Festival",
-                Date = new DateTime(2025, 7, 15),
-                AvailableTickets = 150
-            }
-        );
-        modelBuilder.Entity<Customer>().HasData(
-            new Customer
-            {
-                CustomerId = 1,
-                FirstName = "Jan",
-                LastName = "Kowalski",
-                PhoneNumber = "555-123-456"
-            }
-        );
-        modelBuilder.Entity<Ticket>().HasData(
-            new Ticket
-            {
-                TicketId = 1,
-                SerialNumber = "SN123456",
-                SeatNumber = 12,
-            }
-        );
-        modelBuilder.Entity<TicketConcert>().HasData(
-            new TicketConcert
-            {
-                TicketConcertId = 1,
-                TicketId = 1,
-                ConcertId = 1,
-                Price = 99.99
-            }
-        );
+        modelBuilder.Entity<Item>().HasData(new Item
+        {
+            ItemId = 1,
+            Name = "Magic Sword",
+            Weight = 10
+        });
+
+        modelBuilder.Entity<Character>().HasData(new Character
+        {
+            CharacterId = 1,
+            FirstName = "Arthas",
+            LastName = "Menethil",
+            CurrentWeight = 10,
+            MaxWeight = 50
+        });
+
+        modelBuilder.Entity<Title>().HasData(new Title
+        {
+            TitleId = 1,
+            Name = "Champion of the Light"
+        });
+
+        modelBuilder.Entity<Backpack>().HasData(new Backpack
+        {
+            CharacterId = 1,
+            ItemId = 1,
+            Amount = 1
+        });
+
+        modelBuilder.Entity<CharacterTitle>().HasData(new CharacterTitle
+        {
+            CharacterId = 1,
+            TitleId = 1,
+            AcquiredAt = new DateTime(2024, 1, 1)
+        });
     }
-    
 }

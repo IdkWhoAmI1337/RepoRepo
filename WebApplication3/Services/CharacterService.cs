@@ -6,16 +6,18 @@ namespace WebApplication3.Services;
 public interface ICharacterService
 {
     Task<CharacterGetDto> GetCharacterById(int characterId);
-    Task AddItemsToBackpack(int characterId, CharacterPostDto request);
+    Task<int> AddItemsToBackpack(int characterId, CharacterPostDto request);
 }
 
 public class CharacterService(AppDbContext context) : ICharacterService
 {
     public async Task<CharacterGetDto> GetCharacterById(int characterId)
     {
+        return new CharacterGetDto{};
     }
 
-    public async Task AddItemsToBackpack(int characterId, CharacterPostDto request)
+    public async Task<int> AddItemsToBackpack(int characterId, CharacterPostDto request)
     {
+        return 1;
     }
 }
