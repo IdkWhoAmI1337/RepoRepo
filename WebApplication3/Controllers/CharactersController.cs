@@ -22,7 +22,7 @@ public class CharactersController(ICharacterService characterService) : Controll
     }
 
     [HttpPost("backpacks")]
-    public async Task<IActionResult> AddItemsToBackpack([FromRoute] int characterId, [FromBody] CharacterPostDto request)
+    public async Task<IActionResult> AddItemsToBackpack([FromRoute] int characterId, [FromBody] List<int> request)
     {
         try
         {
